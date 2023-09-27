@@ -12,6 +12,8 @@ st.write(
     "This guide will help you choose."
 )
 
+
+
 # Working with Dataframes: https://docs.snowflake.com/en/developer-guide/snowpark/python/working-with-dataframes
 restaurants_df = session.table("MARKETPLACE_RESTAURANTS.UNIFIED_SCHEMA.LOCATIONS_SAMPLE")
 # st.write(restaurants_df)
@@ -110,7 +112,11 @@ if st.session_state.chosen_option_field != '':
     choose_button = st.button("Choose Restaurant", use_container_width = True)
     if choose_button:
         st.session_state.chosen_restaurant = restaurant_selector
-            
+
+
+
+
+        
 if st.session_state.chosen_restaurant != '':
     final_restaurant = final_restaurants_df.filter(col("LOCATION_NAME") == restaurant_selector).select(col("LOCATION_ID"), col("LOCATION_NAME"),col("LOCATION_FULL_ADDRESS")).collect()
     
